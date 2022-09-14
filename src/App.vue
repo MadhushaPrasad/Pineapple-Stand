@@ -1,9 +1,8 @@
 <script setup>
 import TheHeader from '@/components/TheHeader.vue';
 import ProductCard from '@/components/ProductCard.vue';
-import products from '@/data/products.json';
 import { useProductsStore } from '@/stores/ProductStore';
-useProductsStore();
+const productsStore = useProductsStore();
 </script>
 
 <template>
@@ -11,7 +10,7 @@ useProductsStore();
     <TheHeader />
     <ul class="sm:flex flex-wrap lg:flex-nowrap gap-5">
       <ProductCard
-        v-for="product in products"
+        v-for="product in productsStore.product"
         :key="product.name"
         :product="product"
       />
