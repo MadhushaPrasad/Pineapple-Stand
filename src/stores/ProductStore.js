@@ -1,14 +1,17 @@
 import { defineStore } from 'pinia';
-import product from '@/data/products.json';
 
 export const useProductsStore = defineStore('ProductStore', {
   state: () => {
     return {
-      product,
+      product: [],
     };
   },
 
-  actions: {},
+  actions: {
+    async fill() {
+      this.product = await import('@/data/products.json').default;
+    },
+  },
 
   mutations: {},
 });
